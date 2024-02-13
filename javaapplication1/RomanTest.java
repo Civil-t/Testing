@@ -1,6 +1,5 @@
 package javaapplication1;
 
-import org.junit.Assert;
 import org.junit.*;
 
 public class RomanTest {
@@ -29,6 +28,26 @@ public class RomanTest {
     public void manyLettersInOrder() {
         Assert.assertEquals(6, new Roman().romanToInt("VI"));
         Assert.assertEquals(15, new Roman().romanToInt("XV"));
+    }
+
+    @Test
+    public void testNull() {
+        Assert.assertThrows(NullPointerException.class, () -> new Roman().romanToInt(null));
+    }
+
+    @Test
+    public void invalidAndValidLetter() {
+        Assert.assertThrows(NullPointerException.class, () -> new Roman().romanToInt("XIZ"));
+    }
+
+    @Test
+    public void inValidLetter() {
+        Assert.assertThrows(NullPointerException.class, () -> new Roman().romanToInt("Z"));
+    }
+
+    @Test
+    public void testSubtractiveNotation() {
+        Assert.assertEquals(4, new Roman().romanToInt("IV"));
     }
 
 }
